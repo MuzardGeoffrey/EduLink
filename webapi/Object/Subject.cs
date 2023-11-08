@@ -1,32 +1,35 @@
 ﻿namespace webapi.Object
 {
-    public class Subject
-    {
-        public string Name { get; private set; }
-        public EnumSubject EnumSubject { get; private set; }
-        public Level Level { get; private set; }
+    using Microsoft.EntityFrameworkCore;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-        public Subject(EnumSubject enumSubject, int level)
+    [Table("Subject")]
+    [PrimaryKey(nameof(EnumSubject), nameof(Level))]
+    public class Subject : BaseObject
+    {
+        public EnumSubject EnumSubject { get; private set; }
+        public short Level { get; set; }
+
+        public List<User> Users { get; set; }
+
+        public Subject(EnumSubject enumSubject)
         {
             this.Set(enumSubject);
-            this.Level = new(level);
+        }
+
+        public Subject(EnumSubject enumSubject, short level) : this(enumSubject)
+        {
+            this.Level = level;
         }
 
         public Subject Set(EnumSubject enumSubject)
         {
-            this.Name = enumSubject.ToString();
             this.EnumSubject = enumSubject;
             return this;
         }
-
-        public Level Set(int level)
-        {
-            this.Level.Set(level);
-            return this.Level;
-        }
     }
 
-    public enum EnumSubject
+    public enum EnumSubject : short
     {
         ENGLISH,
         MATH,
