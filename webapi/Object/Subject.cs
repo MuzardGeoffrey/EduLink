@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Subject")]
-    [PrimaryKey(nameof(EnumSubject), nameof(Level))]
+    [PrimaryKey(nameof(EnumSubject), nameof(Level), nameof(Id))]
     public class Subject : BaseObject
     {
         public EnumSubject EnumSubject { get; private set; }
@@ -20,6 +20,12 @@
         public Subject(EnumSubject enumSubject, short level) : this(enumSubject)
         {
             this.Level = level;
+        }
+
+        public Subject(EnumSubject enumSubject, short level, int id) : this(enumSubject, level)
+        {
+            this.Id = id;
+            this.CreatedDate = DateTime.Now;
         }
 
         public Subject Set(EnumSubject enumSubject)

@@ -33,9 +33,12 @@ namespace webapi.Migrations
                     b.Property<short>("SubjectsLevel")
                         .HasColumnType("smallint");
 
-                    b.HasKey("UsersId", "SubjectsEnumSubject", "SubjectsLevel");
+                    b.Property<int>("SubjectsId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("SubjectsEnumSubject", "SubjectsLevel");
+                    b.HasKey("UsersId", "SubjectsEnumSubject", "SubjectsLevel", "SubjectsId");
+
+                    b.HasIndex("SubjectsEnumSubject", "SubjectsLevel", "SubjectsId");
 
                     b.ToTable("SubjectUser");
                 });
@@ -48,13 +51,19 @@ namespace webapi.Migrations
                     b.Property<short>("Level")
                         .HasColumnType("smallint");
 
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("LastUpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("EnumSubject", "Level");
+                    b.HasKey("EnumSubject", "Level", "Id");
 
                     b.ToTable("Subject");
 
@@ -63,361 +72,421 @@ namespace webapi.Migrations
                         {
                             EnumSubject = "ENGLISH",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3060)
                         },
                         new
                         {
                             EnumSubject = "ENGLISH",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3131)
                         },
                         new
                         {
                             EnumSubject = "ENGLISH",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 3,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3147)
                         },
                         new
                         {
                             EnumSubject = "ENGLISH",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 4,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3161)
                         },
                         new
                         {
                             EnumSubject = "MATH",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 5,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3177)
                         },
                         new
                         {
                             EnumSubject = "MATH",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 6,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3195)
                         },
                         new
                         {
                             EnumSubject = "MATH",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 7,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3209)
                         },
                         new
                         {
                             EnumSubject = "MATH",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 8,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3224)
                         },
                         new
                         {
                             EnumSubject = "HISTORY",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 9,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3240)
                         },
                         new
                         {
                             EnumSubject = "HISTORY",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 10,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3256)
                         },
                         new
                         {
                             EnumSubject = "HISTORY",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 11,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3270)
                         },
                         new
                         {
                             EnumSubject = "HISTORY",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 12,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3284)
                         },
                         new
                         {
                             EnumSubject = "GEOGRAPHY",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 13,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3300)
                         },
                         new
                         {
                             EnumSubject = "GEOGRAPHY",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 14,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3314)
                         },
                         new
                         {
                             EnumSubject = "GEOGRAPHY",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 15,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3329)
                         },
                         new
                         {
                             EnumSubject = "GEOGRAPHY",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 16,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3343)
                         },
                         new
                         {
                             EnumSubject = "SCIENCE",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 17,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3359)
                         },
                         new
                         {
                             EnumSubject = "SCIENCE",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 18,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3419)
                         },
                         new
                         {
                             EnumSubject = "SCIENCE",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 19,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3435)
                         },
                         new
                         {
                             EnumSubject = "SCIENCE",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 20,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3449)
                         },
                         new
                         {
                             EnumSubject = "PHYSICS",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 21,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3465)
                         },
                         new
                         {
                             EnumSubject = "PHYSICS",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 22,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3480)
                         },
                         new
                         {
                             EnumSubject = "PHYSICS",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 23,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3494)
                         },
                         new
                         {
                             EnumSubject = "PHYSICS",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 24,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3508)
                         },
                         new
                         {
                             EnumSubject = "CHEMISTRY",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 25,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3523)
                         },
                         new
                         {
                             EnumSubject = "CHEMISTRY",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 26,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3537)
                         },
                         new
                         {
                             EnumSubject = "CHEMISTRY",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 27,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3551)
                         },
                         new
                         {
                             EnumSubject = "CHEMISTRY",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 28,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3565)
                         },
                         new
                         {
                             EnumSubject = "BIOLOGY",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 29,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3581)
                         },
                         new
                         {
                             EnumSubject = "BIOLOGY",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 30,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3595)
                         },
                         new
                         {
                             EnumSubject = "BIOLOGY",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 31,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3609)
                         },
                         new
                         {
                             EnumSubject = "BIOLOGY",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 32,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3623)
                         },
                         new
                         {
                             EnumSubject = "PHILOSOPHY",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 33,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3639)
                         },
                         new
                         {
                             EnumSubject = "PHILOSOPHY",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 34,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3654)
                         },
                         new
                         {
                             EnumSubject = "PHILOSOPHY",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 35,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3668)
                         },
                         new
                         {
                             EnumSubject = "PHILOSOPHY",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 36,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3682)
                         },
                         new
                         {
                             EnumSubject = "ART",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 37,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3698)
                         },
                         new
                         {
                             EnumSubject = "ART",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 38,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3712)
                         },
                         new
                         {
                             EnumSubject = "ART",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 39,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3754)
                         },
                         new
                         {
                             EnumSubject = "ART",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 40,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3771)
                         },
                         new
                         {
                             EnumSubject = "MUSIC",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 41,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3787)
                         },
                         new
                         {
                             EnumSubject = "MUSIC",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 42,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3801)
                         },
                         new
                         {
                             EnumSubject = "MUSIC",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 43,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3815)
                         },
                         new
                         {
                             EnumSubject = "MUSIC",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 44,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3867)
                         },
                         new
                         {
                             EnumSubject = "SPORT",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 45,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3886)
                         },
                         new
                         {
                             EnumSubject = "SPORT",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 46,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3900)
                         },
                         new
                         {
                             EnumSubject = "SPORT",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 47,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3914)
                         },
                         new
                         {
                             EnumSubject = "SPORT",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 48,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3927)
                         },
                         new
                         {
                             EnumSubject = "COMPUTER_SCIENCE",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 49,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3943)
                         },
                         new
                         {
                             EnumSubject = "COMPUTER_SCIENCE",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 50,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3957)
                         },
                         new
                         {
                             EnumSubject = "COMPUTER_SCIENCE",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 51,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3971)
                         },
                         new
                         {
                             EnumSubject = "COMPUTER_SCIENCE",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 52,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(3985)
                         },
                         new
                         {
                             EnumSubject = "FRENCH",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 53,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4000)
                         },
                         new
                         {
                             EnumSubject = "FRENCH",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 54,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4014)
                         },
                         new
                         {
                             EnumSubject = "FRENCH",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 55,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4028)
                         },
                         new
                         {
                             EnumSubject = "FRENCH",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 56,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4041)
                         },
                         new
                         {
                             EnumSubject = "SPANISH",
                             Level = (short)3,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 57,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4057)
                         },
                         new
                         {
                             EnumSubject = "SPANISH",
                             Level = (short)4,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 58,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4071)
                         },
                         new
                         {
                             EnumSubject = "SPANISH",
                             Level = (short)5,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 59,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4085)
                         },
                         new
                         {
                             EnumSubject = "SPANISH",
                             Level = (short)6,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Id = 60,
+                            CreatedDate = new DateTime(2023, 12, 4, 18, 49, 37, 265, DateTimeKind.Local).AddTicks(4099)
                         });
                 });
 
@@ -470,7 +539,7 @@ namespace webapi.Migrations
 
                     b.HasOne("webapi.Object.Subject", null)
                         .WithMany()
-                        .HasForeignKey("SubjectsEnumSubject", "SubjectsLevel")
+                        .HasForeignKey("SubjectsEnumSubject", "SubjectsLevel", "SubjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
