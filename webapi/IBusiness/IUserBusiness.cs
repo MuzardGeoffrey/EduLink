@@ -7,5 +7,7 @@
         public Task<List<User>> List();
 
         public Task<User?> Details(int id);
+
+        public Task<bool> Login(string email, string password);
     }
 }

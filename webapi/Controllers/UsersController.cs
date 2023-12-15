@@ -1,9 +1,6 @@
 ﻿namespace webapi.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using webapi.Business;
     using webapi.IBusiness;
@@ -40,7 +37,7 @@
         {
             if (ModelState.IsValid)
             {
-                user = await this.userBusiness.Create(user);
+                user = await this.userBusiness.CreateOrUpdate(user);
                 return Ok(user);
             }
             return NoContent();
@@ -55,7 +52,7 @@
         {
             if (!ModelState.IsValid)
             {
-                user = await this.userBusiness.Update(user);
+                user = await this.userBusiness.CreateOrUpdate(user);
                 return user == null ? NotFound(user) : Ok(user);
             }
             return NotFound(user);
@@ -68,6 +65,15 @@
         {
             bool confirm = await this.userBusiness.Delete(id);
             return confirm ? Ok() : NotFound();
+        }
+
+        // POST: Users/Verify
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("Email,Password")] User user)
+        {
+            var IsAutenticate = await this.userBusiness.Login(user.Email, user.Password);
+            return IsAutenticate ? NotFound() : Ok();
         }
     }
 }

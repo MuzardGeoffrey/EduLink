@@ -24,10 +24,12 @@
             return user;
         }
 
-        public void Dispose()
+        public async Task<bool> Login(string email, string password)
         {
-            this.Dispose();
-            this._context.Dispose();
+            bool isExist = await _context.Users
+                .Where(u => u.Email == email && u.Password == password).AnyAsync();
+
+            return isExist;
         }
     }
 }

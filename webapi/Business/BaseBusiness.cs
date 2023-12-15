@@ -15,10 +15,6 @@
             _context = context;
         }
 
-        public void Dispose()
-        {
-        }
-
         public async Task<T?> Get(int id)
         {
             T? user = await _context.FindAsync<T>(id);
@@ -54,6 +50,12 @@
             }
 
             return false;
+        }
+
+        public void Dispose()
+        {
+            this._context.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }
