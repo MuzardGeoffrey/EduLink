@@ -1,0 +1,6 @@
+@EduLink.Server_HostAddress = http://localhost:5078
+
+GET {{EduLink.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
