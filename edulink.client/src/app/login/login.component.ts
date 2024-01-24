@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClientHelper } from '../services/HttpClientHelper';
 import { first } from 'rxjs/operators';
 import { User } from '../models/User';
-import { API_ROUTES } from '../app-routing.module';
+import { API_ROUTES } from '../constants/api-routes';
 
 @Component({
   selector: 'app-login',

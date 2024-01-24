@@ -10,4 +10,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   }
+  title = 'edulink.client';
 }
