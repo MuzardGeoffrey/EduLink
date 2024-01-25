@@ -19,16 +19,16 @@ export enum EnumSubject {
 }
 
 export class Subject extends BaseObject {
-  enumSubject: EnumSubject;
+  enumSubject: EnumSubject = 0;
   level: number | undefined;
 
-  constructor(enumSubject: EnumSubject, level?: number, id?: number, createdDate?: Date, lastUpdateDate?: Date) {
-    super(id, createdDate, lastUpdateDate)
-    this.enumSubject = enumSubject;
-    if (level !== undefined) {
-      this.level = level;
-    }
-  }
+  //constructor(enumSubject: EnumSubject, level?: number, id?: number, createdDate?: Date, lastUpdateDate?: Date) {
+  //  super(id, createdDate, lastUpdateDate)
+  //  this.enumSubject = enumSubject;
+  //  if (level !== undefined) {
+  //    this.level = level;
+  //  }
+  //}
 
   set(enumSubject: EnumSubject) {
     this.enumSubject = enumSubject;

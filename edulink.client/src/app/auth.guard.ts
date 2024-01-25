@@ -6,6 +6,5 @@ export const AuthGuard = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.isLoging) {
-  }
+  return authService.isLoging;
 }

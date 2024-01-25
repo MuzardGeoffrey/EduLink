@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClientHelper } from './HttpClientHelper';
+import { HttpClientHelper } from './HttpClientHelper.service';
 import { API_ROUTES } from '../constants/api-routes';
+import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,16 +10,16 @@ export class AuthService {
 
   constructor(private http: HttpClientHelper) { }
 
-  login(email: string, password: string): boolean {
-    this.http.postAsync<boolean>(API_ROUTES.VERIFICATION, { email: email, password: password })
-      .subscribe(result => {
-        this.isLoging = result;
-      });
-
-    return this.isLoging;
+  public login(email: string, password: string): Observable<boolean> {
+    return this.http.postAsync<boolean>(API_ROUTES.VERIFICATION, { email: email, password: password })
+      .pipe(
+        tap((result: boolean) => {
+          this.isLoging = result;
+        })
+      );
   }
 
-  logout(): void {
+  public logout(): void {
     this.isLoging = false;
   }
 }

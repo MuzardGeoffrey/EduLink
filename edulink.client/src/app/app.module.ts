@@ -1,26 +1,10 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AppRoutingModule } from './app-routing.module';
+export const routes: Routes = [
+  { path: 'home', loadComponent: () => import('./home/home.component').then(module => module.HomeComponent), title: "home" },
+  { path: 'profile', loadComponent: () => import('./profile/profile.component').then(module => module.ProfileComponent), title: "profile",canActivate: [AuthGuard] },
+  { path: 'identification', loadChildren: () => import('./identification/identification.route') },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    ProfileComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+];
