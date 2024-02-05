@@ -1,6 +1,6 @@
-@EduLink.Server_HostAddress = http://localhost:5078
+@EduLink.Server_HostAddress = http://localhost:5079
 
-GET {{EduLink.Server_HostAddress}}/User/
+GET {{EduLink.Server_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

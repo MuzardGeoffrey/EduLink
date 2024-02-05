@@ -18,20 +18,12 @@ export enum EnumSubject {
   SPANISH,
 }
 
-export class Subject extends BaseObject {
-  enumSubject: EnumSubject = 0;
-  level: number | undefined;
+export interface Subject extends BaseObject {
 
-  //constructor(enumSubject: EnumSubject, level?: number, id?: number, createdDate?: Date, lastUpdateDate?: Date) {
-  //  super(id, createdDate, lastUpdateDate)
-  //  this.enumSubject = enumSubject;
-  //  if (level !== undefined) {
-  //    this.level = level;
-  //  }
-  //}
 
-  set(enumSubject: EnumSubject) {
-    this.enumSubject = enumSubject;
-    return this;
+}
+
+export class Subject implements Subject {
+  constructor() {
   }
 }

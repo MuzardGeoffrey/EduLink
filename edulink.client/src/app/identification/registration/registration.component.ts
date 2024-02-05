@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-registration',
-    templateUrl: './registration.component.html',
-    styleUrls: ['./registration.component.css'],
-    standalone: true,
-    imports: [FormsModule]
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css'],
+  standalone: true,
+  imports: [FormsModule]
 })
 export class RegistrationComponent implements OnInit {
   registrationModel = new userRegistration();
@@ -24,25 +24,26 @@ export class RegistrationComponent implements OnInit {
 
   public registration() {
     if (this.registrationModel.password = this.registrationModel.confirmPassword) {
-      const user = new User();
+      const user = new User;
       user.email = this.registrationModel.email;
       user.password = this.registrationModel.password;
+      user.firstName = this.registrationModel.firstName;
+      user.firstName = this.registrationModel.lastName;
+      user.firstName = this.registrationModel.pseudo;
+      user.createdDate = new Date();
 
       this.http.postAsync<User>(API_ROUTES.USER_CREATION, user).subscribe((result: User) => {
-        if (result.email == this.registrationModel.email) {
+        if (result == null || result.email == this.registrationModel.email) {
           this.registrationFailed = false;
           this.router.navigate(['/login']);
         }
       });
     } else {
       this.registrationFailed = true;
-      console.log('error in registration');
     }
   }
 }
 
-export class userRegistration {
-  email: string = "";
-  password: string = "";
+export class userRegistration extends User {
   confirmPassword: string = "";
 }

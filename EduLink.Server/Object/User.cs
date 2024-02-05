@@ -4,25 +4,34 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("User")]
-    public class User(string firstName, string lastName, string email, string password, string pseudo) : BaseObject
+    public class User() : BaseObject
     {
-        [Required]
-        public string FirstName { get; set; } = firstName;
+        public User(string firstName, string lastName, string email, string password, string pseudo) : this()
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            Pseudo = pseudo;
+        }
 
-        [Required]
-        public string LastName { get; set; } = lastName;
+        public User(int id, string firstName, string lastName, string email, string password, string pseudo) : this(firstName, lastName, email, password, pseudo)
+        {
+            this.Id = id;
+            this.CreatedDate = DateTime.Now;
+        }
 
-        [Required]
-        public string Email { get; set; } = email;
+        public string FirstName { get; set; }
 
-        [Required]
-        public string Password { get; set; } = password;
+        public string LastName { get; set; }
 
-        [Required]
-        public string Pseudo { get; set; } = pseudo;
+        [EmailAddress]
+        public string Email { get; set; }
 
-        public string PseudoShortened => Pseudo[..3];
+        public string Password { get; set; }
 
-        public List<Subject>? Subjects { get; set; }
+        public string Pseudo { get; set; }
+
+        public List<Subject> Subjects { get; set; }
     }
 }

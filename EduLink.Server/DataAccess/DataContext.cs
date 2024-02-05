@@ -1,5 +1,6 @@
 ﻿namespace webapi.DataAccess
 {
+    using EduLink.Server.DataAccess.Seed;
     using Microsoft.EntityFrameworkCore;
     using webapi.DataAccess.Seed;
     using webapi.Object;
@@ -43,6 +44,7 @@
         private static void GenerateSeed(ModelBuilder modelBuilder)
         {
             SubjectSeed.GenerateData(modelBuilder);
+            UserSeed.GenerateData(modelBuilder);
         }
     }
 }

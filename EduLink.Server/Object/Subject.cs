@@ -12,6 +12,10 @@
 
         public List<User> Users { get; set; }
 
+        public Subject()
+        {
+        }
+
         public Subject(EnumSubject enumSubject)
         {
             this.Set(enumSubject);

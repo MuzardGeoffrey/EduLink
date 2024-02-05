@@ -2,13 +2,14 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/User';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    standalone: true,
-    imports: [FormsModule]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  standalone: true,
+  imports: [FormsModule]
 })
 export class LoginComponent implements OnInit {
   authservice: AuthService;
@@ -23,12 +24,17 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.authservice.login(this.userModel.email, this.userModel.password)) {
-      this.router.navigate(['/home']);
-    } else {
-      this.loginFailed = true;
-      console.log("Login failed");
-    }
+    this.authservice.login(this.userModel.email, this.userModel.password).subscribe(
+      (result: boolean) => {
+        if (result) {
+          console.log("Login success");
+          this.router.navigate(['/home']);
+        } else {
+          this.loginFailed = true;
+          console.log("Login failed");
+        }
+      }
+    );
   }
 }
 

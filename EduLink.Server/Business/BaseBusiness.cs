@@ -24,13 +24,13 @@
 
         public async Task<T> CreateOrUpdate(T t)
         {
-            if (t != null && this.Get(t.Id) != null)
+            if (t != null && t != default && this.Get(t.Id) != null)
             {
                 _context.Update(t);
             }
             else
             {
-                _context.Add<T>(t);
+               _context.Add<T>(t);
             }
 
             await _context.SaveChangesAsync();
