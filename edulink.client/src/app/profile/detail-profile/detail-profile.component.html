@@ -18,18 +18,18 @@
                 <div class="mt-4">
                     <h4>Subjects:</h4>
                     <ul>
-<!--                         @for (subject of user.subjects; track subject.id) {
-                                                <li>
-                                                <p>
-                                                    {{ subject.enumSubject }}
-                                                </p>
-                                                <p>
-                                                    {{ subject.level }}
-                                                </p>
-                                            </li>
-                                            } @empty {
-                                            <li>No subjects</li>
-                        } -->
+                        @for (subject of user.subjects; track subject.id) {
+                        <li>
+                            <p>
+                                {{ subject.enumSubject }}
+                            </p>
+                            <p>
+                                {{ subject.level }}
+                            </p>
+                        </li>
+                        } @empty {
+                        <li>No subjects</li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "edulink.client:build:production"
+              "buildTarget": "edulink.client:build:production"
             },
             "development": {
-              "browserTarget": "edulink.client:build:development"
+              "buildTarget": "edulink.client:build:development"
             }
           },
           "defaultConfiguration": "development",
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "edulink.client:build"
+            "buildTarget": "edulink.client:build"
           }
         },
         "test": {
