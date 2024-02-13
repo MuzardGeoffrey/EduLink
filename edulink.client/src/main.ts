@@ -8,10 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { FooterComponent } from './app/shared/footer/footer.component';
+import { NgFor } from '@angular/common';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, FormsModule, ReactiveFormsModule),
+    importProvidersFrom(BrowserModule, FormsModule, ReactiveFormsModule, NgFor),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(routes),
     FooterComponent

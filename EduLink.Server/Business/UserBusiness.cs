@@ -38,11 +38,11 @@
             return user;
         }
 
-        public async Task<bool> Login(string email, string password)
+        public async Task<int> Login(string email, string password)
         {
-            bool isExist = await _context.Users.AnyAsync(u => u.Email == email && u.Password == password);
+            int userId = await _context.Users.Where(u => u.Email == email && u.Password == password).Select(u => u.Id).FirstOrDefaultAsync();
 
-            return isExist;
+            return userId;
         }
     }
 }

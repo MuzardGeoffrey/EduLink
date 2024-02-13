@@ -65,8 +65,8 @@
         [HttpPost("verify")]
         public async Task<IActionResult> Login([FromBody][Bind("Email,Password")] User user)
         {
-            var IsAutenticate = await this._userBusiness.Login(user.Email, user.Password);
-            return IsAutenticate ? Ok(true): Unauthorized();
+            var UserId = await this._userBusiness.Login(user.Email, user.Password);
+            return UserId == default ? Unauthorized(0) : Ok(UserId);
         }
     }
 }

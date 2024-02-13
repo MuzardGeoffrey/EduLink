@@ -19,11 +19,14 @@ export enum EnumSubject {
 }
 
 export interface Subject extends BaseObject {
-
+  enumSubject: EnumSubject;
+  level: number;
 
 }
 
 export class Subject implements Subject {
   constructor() {
+    this.enumSubject = EnumSubject.ENGLISH;
+    this.level = 0;
   }
 }
