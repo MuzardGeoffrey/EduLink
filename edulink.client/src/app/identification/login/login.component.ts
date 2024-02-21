@@ -2,6 +2,7 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   authservice: AuthService;
   loginFailed = false;
-  userModel = new UserLogin();
+  userModel = new User;
 
   constructor(private formBuilder: FormBuilder, private router: Router, authservice: AuthService) {
     this.authservice = authservice;
@@ -35,9 +36,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-}
-
-export class UserLogin {
-  email: string = "";
-  password: string = "";
 }

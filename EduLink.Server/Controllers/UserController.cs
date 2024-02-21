@@ -39,16 +39,16 @@
             return NoContent();
         }
 
-        // POST: User/Edit/5
+        // PUT: User/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut("edit/{id}")]
-        public async Task<IActionResult> Edit([FromBody][Bind("Id,FirstName,LastName,Email,Password,Pseudo,CreatedDate,LastUpdateDate")] User user)
+        public async Task<IActionResult> Edit([FromBody][Bind("Id,FirstName,LastName,Email,Pseudo,CreatedDate,LastUpdateDate")] User? user)
         {
-            if (!ModelState.IsValid)
+            if (user != default)
             {
-                user = await this._userBusiness.CreateOrUpdate(user);
-                return user == null ? NotFound(user) : Ok(user);
+                user = user.Password == "" ? await this._userBusiness.Update(user) : await this._userBusiness.UpdateWithPassword(user);
+                return Ok(user);
             }
             return NotFound(user);
         }

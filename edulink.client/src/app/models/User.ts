@@ -20,3 +20,7 @@ export class User implements User {
     this.subjects = [];
   }
 }
+
+export class userRegistration extends User {
+  confirmPassword: string = "";
+}

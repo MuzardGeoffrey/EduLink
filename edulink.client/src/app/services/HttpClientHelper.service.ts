@@ -16,4 +16,8 @@ export class HttpClientHelper {
   public postAsync<T>(url: string, data: any): Observable<T> {
     return this.httpClient.post<T>(url, data);
   }
+
+  public putAsync<T>(url: string, data: any): Observable<T> {
+    return this.httpClient.put<T>(url, data);
+  }
 }

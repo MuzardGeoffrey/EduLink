@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/User';
+import { User, userRegistration } from '../../models/User';
 import { HttpClientHelper } from '../../services/HttpClientHelper.service';
 import { API_ROUTES } from '../../constants/api-routes';
 import { Router } from '@angular/router';
@@ -42,8 +42,4 @@ export class RegistrationComponent implements OnInit {
       this.registrationFailed = true;
     }
   }
-}
-
-export class userRegistration extends User {
-  confirmPassword: string = "";
 }

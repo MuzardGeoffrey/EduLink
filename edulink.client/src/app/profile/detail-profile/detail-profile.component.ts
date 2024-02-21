@@ -10,7 +10,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './detail-profile.component.html',
   styleUrls: ['./detail-profile.component.css'],
   standalone: true,
-  imports: [RouterLink]
+imports: [RouterLink, RouterOutlet]
 })
 export class DetailProfileComponent implements OnInit {
   user = new User;
