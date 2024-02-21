@@ -1,1 +1,87 @@
-<p>edit-profile works!</p>
+<main class="profile-page">
+    <section class="section">
+        <div class="container">
+            <div class="text-center mt-5">
+                <form>
+                    <p>firstName</p>
+                    <input class="form-control" type="text" id="firstName" name="firstName" placeholder="FirstName"
+                           required
+                           [(ngModel)]="userModel.firstName">
+                    <p>lastName</p>
+                    <input class="form-control" type="text" id="lastName" name="lastName" placeholder="LastName"
+                           required
+                           [(ngModel)]="userModel.lastName">
+                    <p>pseudo</p>
+                    <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required
+                           [(ngModel)]="userModel.pseudo">
+                    <p>email</p>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email" required
+                           [(ngModel)]="userModel.email">
+                    <p>password</p>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password"
+                           required
+                           [(ngModel)]="userModel.password">
+                    <p>confirmPassword</p>
+                    <input class="form-control" type="password" id="confirmPassword" name="confirmPassword"
+                           placeholder="ConfirmPassword"
+                           required
+                           [(ngModel)]="confirmPassword">
+                    <h4>Subjects:</h4>
+                    <ul>
+                        @for (subject of subjectList; track subject.id) {
+                        <li>
+                            <p>
+                                <select class="form-control" id="subjectType" name="subjectType" required
+                                        [(ngModel)]="subject.enumSubject">
+                                    @for (enumSubject of enumSubjectKeys; track enumSubject) {
+                                    <option>{{enumSubject}}</option>
+                                    }
+                                </select>
+                            </p>
+                            <p>
+                                <select class="form-control" id="subjectType" name="subjectType" required
+                                        [(ngModel)]="subject.level">
+                                    @for (enumLevel of enumLevelString | keyvalue; track enumLevel.key) {
+                                    <option>{{enumLevel.key}}</option>
+                                    }
+
+                                </select>
+                            </p>
+                            <button type="button" class="fa-trash" (click)="removeSubject(subject.id)"></button>
+                        </li>
+                        } @empty {
+                        <li>No subjects</li>
+                        }
+                    </ul>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary my-4" (click)="onSubmit()">submit</button>
+                    </div>
+                </form>
+                <div>
+                    <h2>Add subject</h2>
+                    <form>
+                        <p>
+                            <select class="form-control" id="subjectType" name="subjectType" required
+                                    [(ngModel)]="subjectModel">
+                                @for (enumSubject of enumSubjectKeys; track enumSubject) {
+                                <option>{{enumSubject}}</option>
+                                }
+                            </select>
+                        </p>
+                        <p>
+                            <select class="form-control" id="subjectType" name="subjectType" required
+                                    [(ngModel)]="subjectList">
+                                @for (enumLevel of enumLevelString | keyvalue; track enumLevel.key) {
+                                <option>{{enumLevel.key}}</option>
+                                }
+
+                            </select>
+                        </p>
+                        <button type="button" class="fa-plus" (click)="addSubject(subjectModel)"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a routerLink="/profile/">Edit</a>
+    </section>
+</main>
