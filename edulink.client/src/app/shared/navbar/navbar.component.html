@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light bg-light row">
+    <a class="navbar-brand col-2" routerLink="/home">
+        <img class="d-inline-block align-top img-fluid" alt="Logo" src="./assets/img/logo/logo-png.png">
+    </a>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="col-1 navbar-close">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <a mat-menu-item routerLink="/user-profile">Profile</a>
+        <a mat-menu-item routerLink="/login">Login</a>
+        <a mat-menu-item routerLink="/register">Register</a>
+    </mat-menu>
+</nav>

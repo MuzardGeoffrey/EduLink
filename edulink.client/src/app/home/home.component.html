@@ -1,1 +1,14 @@
-<p>Hello world</p>
+<mat-sidenav-container class="side-container">
+    <mat-sidenav opened mode="side" position="start" role="navigation">
+        <app-rigthbar></app-rigthbar>
+    </mat-sidenav>
+    <mat-sidenav opened mode="side" position="end" role="scrollbar">
+        <app-leftbar></app-leftbar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div>
+            <p>home works!</p>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet></router-outlet>

@@ -8,14 +8,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { FooterComponent } from './app/shared/footer/footer.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { NgFor } from '@angular/common';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, FormsModule, ReactiveFormsModule, NgFor),
+        importProvidersFrom(BrowserModule, FormsModule, ReactiveFormsModule, MatMenuTrigger, NgFor),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(routes),
-    FooterComponent
+    FooterComponent,
+    provideAnimations()
   ]
 })
   .catch(err => console.error(err));
