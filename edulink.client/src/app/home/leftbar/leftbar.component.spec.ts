@@ -6,12 +6,10 @@ describe('LeftbarComponent', () => {
   let component: LeftbarComponent;
   let fixture: ComponentFixture<LeftbarComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [LeftbarComponent]
-    })
-    .compileComponents();
-    
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [LeftbarComponent]
+    });
     fixture = TestBed.createComponent(LeftbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
