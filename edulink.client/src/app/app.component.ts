@@ -1,9 +1,8 @@
+import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +13,8 @@ import { NgFor } from '@angular/common';
     RouterLink,
     RouterOutlet,
     FooterComponent,
-      NavbarComponent,
-      NgFor
+    NavbarComponent,
+    NgFor
   ]
 })
 export class AppComponent implements OnInit {
